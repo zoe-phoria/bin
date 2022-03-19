@@ -1,0 +1,3 @@
+#!/bin/bash
+
+cat /tmp/clipboard | fzf --tac | tr -d '\n' | xclip -selection clipboard

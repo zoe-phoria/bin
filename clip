@@ -1,0 +1,3 @@
+#!/bin/bash
+
+echo $(xclip -o -selection clipboard) >> /tmp/clipboard
