@@ -17,6 +17,9 @@ cp -r /home/zoe/.config/i3/ /mnt/files/Software/.config/
 cp -r /home/zoe/.config/picom/ /mnt/files/Software/.config/
 cp -r /home/zoe/.config/networkmanager-dmenu/ /mnt/files/Software/.config/
 cp -r /home/zoe/.config/neofetch/ /mnt/files/Software/.config/
+cp -r /home/zoe/.config/kicad/ /mnt/files/Software/.config/
+cp /home/zoe/.config/gtk-3.0/settings.ini /mnt/files/Software/.config/gtk-3.0/settings.ini
+cp /home/zoe/.config/gtk-4.0/settings.ini /mnt/files/Software/.config/gtk-4.0/settings.ini
 cp /home/zoe/.config/kdenliverc /mnt/files/Software/.config/
 cp /home/zoe/.config/kdenlive-layoutsrc /mnt/files/Software/.config/
 dconf dump / > /mnt/files/Software/gnome/gnome-settings.ini
