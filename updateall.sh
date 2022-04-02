@@ -25,17 +25,6 @@ yay -Sua
 # seperator
 
 printf '\n'
-printf '%*s\n' "${COLUMNS:-$(tput cols)}" 'cleanup' | tr ' ' =
-printf '\n'
-
-# cleanup
-
-sudo paccache -r
-yay -Yc
-
-# seperator
-
-printf '\n'
 printf '%*s\n' "${COLUMNS:-$(tput cols)}" 'flatpak' | tr ' ' =
 printf '\n'
 
