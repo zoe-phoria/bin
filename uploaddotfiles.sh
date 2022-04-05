@@ -22,5 +22,6 @@ cp /home/zoe/.config/gtk-3.0/settings.ini /mnt/files/Software/.config/gtk-3.0/se
 cp /home/zoe/.config/gtk-4.0/settings.ini /mnt/files/Software/.config/gtk-4.0/settings.ini
 cp /home/zoe/.config/kdenliverc /mnt/files/Software/.config/
 cp /home/zoe/.config/kdenlive-layoutsrc /mnt/files/Software/.config/
+cp -r /home/zoe/aur/startpage/ /mnt/files/Software/Firefox/
 dconf dump / > /mnt/files/Software/gnome/gnome-settings.ini
 sudo cp /root/.bashrc /mnt/files/Software/bash/.bashrc_arch_root
