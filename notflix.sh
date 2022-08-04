@@ -69,7 +69,7 @@ fullURL="${baseurl}${url}/"
 curl -s $fullURL > $cachedir/tmp.html
 magnet=$(grep -Po "magnet:\?xt=urn:btih:[a-zA-Z0-9]*" $cachedir/tmp.html | head -n 1) 
 
-webtorrent "$magnet" --mpv
+webtorrent "$magnet" --mpv -u 1
 
 # Simple notification
 notify-send "🎥 Enjoy Watching ☺️ " -i "NONE"
