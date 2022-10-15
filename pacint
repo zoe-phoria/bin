@@ -41,16 +41,16 @@ case $1 in
 
     "-h"|"--help")
         # display help page
-        echo "usage: pacint <operation>"
-        echo "operations:"
-        echo "    -i, --install  install packages"
-        echo "    -a, --aur      install aur packages"
-        echo "    -r, --remove   remove packages"
-        echo "    -S             search without installing"
-        echo "    -A             search aur without installing"
-        echo "    -I             search instaled packages"
-        echo "    -u, --update   update packages"
-        echo "    -h, --help     display this help page"
+        printf "usage: pacint <operation>\n"
+        printf "operations:\n"
+        printf "    -i, --install  install packages\n"
+        printf "    -a, --aur      install aur packages\n"
+        printf "    -r, --remove   remove packages\n"
+        printf "    -S             search without installing\n"
+        printf "    -A             search aur without installing\n"
+        printf "    -I             search instaled packages\n"
+        printf "    -u, --update   update packages\n"
+        printf "    -h, --help     display this help page\n"
         ;;
         
     "")
