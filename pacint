@@ -17,7 +17,7 @@ case $1 in
         sudo pacman -Runcs $(pacman -Qq | fzf --preview 'pacman -Si {}' --layout=reverse)
         ;;
 
-    "-S")
+    "-S"|"--search")
         # search without installing
         sudo pacman -Slq | fzf --preview "pacman -Si {}" --layout=reverse
         ;;
@@ -46,7 +46,7 @@ case $1 in
         printf "    -i, --install  install packages\n"
         printf "    -a, --aur      install aur packages\n"
         printf "    -r, --remove   remove packages\n"
-        printf "    -S             search without installing\n"
+        printf "    -S, --search   search without installing\n"
         printf "    -A             search aur without installing\n"
         printf "    -I             search instaled packages\n"
         printf "    -u, --update   update packages\n"
@@ -58,7 +58,7 @@ case $1 in
         ;;
 
     *)
-        printf "\033[01;31merror:\033[0m invalid option '$1' (use -h for help)\n"
+        printf "\033[01;31merror:\033[0m invalid operation '$1' (use -h for help)\n"
         ;;
 
 esac
