@@ -1,0 +1,49 @@
+#!/bin/bash
+
+case $1 in
+
+    "-i")
+        # install
+        sudo pacman -S $(pacman -Slq | fzf --preview 'pacman -S {}' --layout=reverse)
+        ;;
+
+    "-a")
+        # install from aur
+        yay -S $(yay -Slq | fzf --preview 'yay -Si {}' --layout=reverse)
+        ;;
+        
+    "-r")
+        #remove
+        sudo pacman -Runcs $(pacman -Qq | fzf --preview 'pacman -Si {}' --layout=reverse)
+        ;;
+
+    "-I")
+        # search without installing
+        sudo pacman -Slq | fzf --preview "pacman -S {}" --layout=reverse
+        ;;
+
+    "-A")
+        # search AUR without installing
+        yay -Slq | fzf --preview 'yay -Si {}' --layout=reverse
+        ;;
+
+    "-h")
+        echo "usage: pacint <operation>"
+        echo "operations:"
+        echo "    pacint -i: install packages"
+        echo "    pacint -a: install aur packages"
+        echo "    pacint -r: remove packages"
+        echo "    pacint -I: search without installing"
+        echo "    pacint -A: search aur without installing"
+        echo "    pacint -h: display this help page"
+        ;;
+        
+    "")
+        printf "\033[01;31merror:\033[0m no operation specified (use -h for help)\n"
+        ;;
+
+    *)
+        printf "\033[01;31merror:\033[0m invalid option '$1' (use -h for help)\n"
+        ;;
+
+esac
