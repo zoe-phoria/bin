@@ -4,7 +4,7 @@ case $1 in
 
     "-i"|"--install")
         # install
-        sudo pacman -S $(pacman -Slq | fzf --preview 'pacman -S {}' --layout=reverse)
+        sudo pacman -S $(pacman -Slq | fzf --preview 'pacman -Si {}' --layout=reverse)
         ;;
 
     "-a"|"--aur")
@@ -17,9 +17,9 @@ case $1 in
         sudo pacman -Runcs $(pacman -Qq | fzf --preview 'pacman -Si {}' --layout=reverse)
         ;;
 
-    "-I")
+    "-S")
         # search without installing
-        sudo pacman -Slq | fzf --preview "pacman -S {}" --layout=reverse
+        sudo pacman -Slq | fzf --preview "pacman -Si {}" --layout=reverse
         ;;
 
     "-A")
@@ -27,7 +27,7 @@ case $1 in
         yay -Slq | fzf --preview 'yay -Si {}' --layout=reverse
         ;;
 
-    "-L")
+    "-I")
         # search installed packages
         pacman -Qqe | fzf --preview 'pacman -Si {}' --layout=reverse
         ;;
@@ -46,9 +46,9 @@ case $1 in
         echo "    -i, --install  install packages"
         echo "    -a, --aur      install aur packages"
         echo "    -r, --remove   remove packages"
-        echo "    -I             search without installing"
+        echo "    -S             search without installing"
         echo "    -A             search aur without installing"
-        echo "    -L             search instaled packages"
+        echo "    -I             search instaled packages"
         echo "    -u, --update   update packages"
         echo "    -h, --help     display this help page"
         ;;
