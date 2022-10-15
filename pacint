@@ -2,17 +2,17 @@
 
 case $1 in
 
-    "-i")
+    "-i"|"--install")
         # install
         sudo pacman -S $(pacman -Slq | fzf --preview 'pacman -S {}' --layout=reverse)
         ;;
 
-    "-a")
+    "-a"|"--aur")
         # install from aur
         yay -S $(yay -Slq | fzf --preview 'yay -Si {}' --layout=reverse)
         ;;
         
-    "-r")
+    "-r"|"--remove")
         #remove
         sudo pacman -Runcs $(pacman -Qq | fzf --preview 'pacman -Si {}' --layout=reverse)
         ;;
@@ -27,15 +27,15 @@ case $1 in
         yay -Slq | fzf --preview 'yay -Si {}' --layout=reverse
         ;;
 
-    "-h")
+    "-h"|"--help")
         echo "usage: pacint <operation>"
         echo "operations:"
-        echo "    pacint -i: install packages"
-        echo "    pacint -a: install aur packages"
-        echo "    pacint -r: remove packages"
-        echo "    pacint -I: search without installing"
-        echo "    pacint -A: search aur without installing"
-        echo "    pacint -h: display this help page"
+        echo "    -i, --install  install packages"
+        echo "    -a, --aur      install aur packages"
+        echo "    -r, --remove   remove packages"
+        echo "    -I             search without installing"
+        echo "    -A             search aur without installing"
+        echo "    -h, --help     display this help page"
         ;;
         
     "")
