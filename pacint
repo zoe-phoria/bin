@@ -27,7 +27,20 @@ case $1 in
         yay -Slq | fzf --preview 'yay -Si {}' --layout=reverse
         ;;
 
+    "-L")
+        # search installed packages
+        pacman -Qqe | fzf --preview 'pacman -Si {}' --layout=reverse
+        ;;
+
+    "-u"|"--update")
+        # update packages
+        sudo pacman -Syu
+        echo ""
+        yay -Sua
+        ;;
+
     "-h"|"--help")
+        # display help page
         echo "usage: pacint <operation>"
         echo "operations:"
         echo "    -i, --install  install packages"
@@ -35,6 +48,8 @@ case $1 in
         echo "    -r, --remove   remove packages"
         echo "    -I             search without installing"
         echo "    -A             search aur without installing"
+        echo "    -L             search instaled packages"
+        echo "    -u, --update   update packages"
         echo "    -h, --help     display this help page"
         ;;
         
