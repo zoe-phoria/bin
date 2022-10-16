@@ -52,7 +52,7 @@ case $1 in
         printf "    -u, --update   update packages\n"
         printf "    -h, --help     display this help page\n"
         ;;
-        
+
     "")
         printf "\033[01;31merror:\033[0m no operation specified (use -h for help)\n"
         ;;
