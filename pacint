@@ -35,7 +35,7 @@ case $1 in
     "-u"|"--update")
         # update packages
         sudo pacman -Syu
-        echo ""
+        printf "\n"
         yay -Sua
         ;;
 
@@ -48,7 +48,7 @@ case $1 in
         printf "    -r, --remove   remove packages\n"
         printf "    -S, --search   search without installing\n"
         printf "    -A             search aur without installing\n"
-        printf "    -I             search instaled packages\n"
+        printf "    -I             search installed packages\n"
         printf "    -u, --update   update packages\n"
         printf "    -h, --help     display this help page\n"
         ;;
