@@ -38,12 +38,12 @@ i3lock                                                        \
     --noinput-text=' '                                        \
     --ring-width 10                                           \
     --indicator                                               \
-    --clock                                                   \
-    --time-str='%H:%M'                                        \
-    --time-color=$TEXT                                        \
-    --time-font='Liberation Mono'                             \
-    --time-size=42                                            \
-    --date-str='%Y-%m-%d'                                     \
-    --date-color=$TEXT                                        \
-    --date-font='Liberation Mono'                             \
-    --date-size=22
+#   --clock                                                   \
+#   --time-str='%H:%M'                                        \
+#   --time-color=$TEXT                                        \
+#   --time-font='Liberation Mono'                             \
+#   --time-size=42                                            \
+#   --date-str='%Y-%m-%d'                                     \
+#   --date-color=$TEXT                                        \
+#   --date-font='Liberation Mono'                             \
+#   --date-size=22
