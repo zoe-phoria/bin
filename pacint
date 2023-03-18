@@ -19,7 +19,7 @@ case $1 in
 
     "-S"|"--search")
         # search without installing
-        sudo pacman -Slq | fzf --preview "pacman -Si {}" --layout=reverse
+        pacman -Slq | fzf --preview "pacman -Si {}" --layout=reverse
         ;;
 
     "-A")
