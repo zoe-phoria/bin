@@ -6,10 +6,7 @@ echo
 if [[ $ans =~ ^[Yy]$ ]]
 then
   echo "shutting down"
-  killall -q keepassxc
-  sudo umount /mnt/files
-  sudo umount /mnt/music
-  shutdown 0
+  systemctl poweroff
 else
   exit
 fi
