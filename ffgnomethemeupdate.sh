@@ -7,7 +7,7 @@ echo
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-  cd /home/zoe/.mozilla/firefox/7zh898nr.default-release/chrome/firefox-gnome-theme/
+  cd /home/zoe/.mozilla/firefox/ee4c2w41.default-release/chrome/firefox-gnome-theme/
   git pull
 fi
 echo
