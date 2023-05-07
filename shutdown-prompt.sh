@@ -1,12 +1,19 @@
 #!/bin/bash
 
-read -p "shutdown now? (y/N) " -n 1 -r ans
+read -p "shutdown/logout/reboot now? (y/l/r/N) " -n 1 -r ans
 echo
 
-if [[ $ans =~ ^[Yy]$ ]]
-then
-  echo "shutting down"
-  systemctl poweroff
-else
-  exit
-fi
+case $ans in
+  "y"|"Y")
+    systemctl poweroff
+    ;;
+  "l"|"L")
+    i3-msg logout
+    ;;
+  "r"|"R")
+    systemctl reboot
+    ;;
+  *)
+    exit
+    ;;
+esac
