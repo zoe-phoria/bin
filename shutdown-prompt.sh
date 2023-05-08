@@ -8,7 +8,7 @@ case $ans in
     systemctl poweroff
     ;;
   "l"|"L")
-    i3-msg logout
+    i3-msg exit
     ;;
   "r"|"R")
     systemctl reboot
