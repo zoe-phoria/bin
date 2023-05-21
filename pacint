@@ -29,7 +29,7 @@ case $1 in
 
     "-I")
         # search installed packages
-        pacman -Qqe | fzf --preview 'pacman -Si {}' --layout=reverse
+        pacman -Qq | fzf --preview 'pacman -Si {}' --layout=reverse
         ;;
 
     "-u"|"--update")
