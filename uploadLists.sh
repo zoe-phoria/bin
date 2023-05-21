@@ -2,7 +2,7 @@
 
 if [[ -d "/mnt/files/Software" ]] 
 then
-    /usr/bin/pacman -Qqen > /mnt/files/Software/pacman/pkglist.txt
+    /usr/bin/pacman -Qqn > /mnt/files/Software/pacman/pkglist.txt
     /usr/bin/pacman -Qqetn > /mnt/files/Software/pacman/nodependpkglist.txt 
     /usr/bin/pacman -Qqem > /mnt/files/Software/pacman/foreignpkglist.txt
     /usr/bin/flatpak list > /mnt/files/Software/pacman/flatpakpkglist.txt
