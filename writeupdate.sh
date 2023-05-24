@@ -13,7 +13,7 @@ then
   # extract write.tar.gz
   tar -xvzf $HOME/builds/write.tar.gz -C $HOME/builds/
   # delete write.tar.gz
-  rm $HOME/builds/write.tar.z
+  rm $HOME/builds/write.tar.gz
   bat $HOME/builds/Write/setup.sh
   echo
   read -p "install? (y/N) "
