@@ -14,7 +14,7 @@ case $1 in
         
     "-r"|"--remove")
         #remove
-        sudo pacman -Runcs $(pacman -Qq | fzf --preview 'pacman -Si {}' --layout=reverse)
+        sudo pacman -Runs $(pacman -Qq | fzf --preview 'pacman -Si {}' --layout=reverse)
         ;;
 
     "-S"|"--search")
