@@ -17,7 +17,7 @@ printf "available size: $AVAIL\n"
 
 if [[ -f $TARGET/files.dummy ]] && (( $SIZE < $AVAIL )); then
     printf "creating backup $(date +"%Y-%m-%d_%H-%M")\n"
-    rsync -av --chmod=D766,F766 --chown=zoe:users $SOURCE ${TARGET}/files_$(date +"%Y-%m-%d_%H-%M") >> "$TARGET/rsync_log_$(date +"%Y-%m-%d_%H-%M")"
+    rsync -av --chmod=D777,F777 $SOURCE ${TARGET}/files_$(date +"%Y-%m-%d_%H-%M") >> "$TARGET/rsync_log_$(date +"%Y-%m-%d_%H-%M")"
 elif [[ -f $TARGET/files.dummy ]]; then
     printf "not enough space\n"
 else
