@@ -10,7 +10,7 @@ else
     exit 1
 fi
 
-if [[ -f $SOURCE/../passwords.kdbx ]]; then
+if [[ -f $SOURCE ]]; then
     cp -u --backup -v $SOURCE $DEST
     rm $HOME/.sync.err > /dev/null
 else
