@@ -13,7 +13,7 @@ else
 fi
 
 if [[ -f $SOURCE/../passwords.kdbx ]]; then
-    rsync -a -E -v --delete -b --backup-dir=$DEL -P --stats $SOURCE $DEST >> $HOME/.syncDocs.log
+    rsync -a -E -v --delete -b --backup-dir=$DEL -P --stats $SOURCE $DEST > $HOME/.syncDocs.log
     rm $HOME/.sync.err &>/dev/null
 else
     printf "$(date +"%Y-%m-%d_%H-%M"): passwords.kdbx not found; syncDocs unsuccessful; is ds718p connected?\n" >> $HOME/.sync.err
