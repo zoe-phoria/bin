@@ -11,7 +11,7 @@ else
 fi
 
 if [[ -f $SOURCE ]]; then
-    cp --backup -v $SOURCE $DEST
+    cp -v $SOURCE $DEST
     rm $HOME/.sync.err > /dev/null
 else
     printf "$(date +"%Y-%m-%d_%H-%M"): database file not found; syncPass unsuccessful; is ds718p connected?\n" >> $HOME/.sync.err
