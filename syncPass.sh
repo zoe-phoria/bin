@@ -11,7 +11,8 @@ else
 fi
 
 if [[ -f $SOURCE ]]; then
-    cp $SOURCE $DEST
+    date +"%Y-%m-%d_%H-%M" >> .syncPass.log
+    cp -v  $SOURCE $DEST >> .syncPass.log
     rm $HOME/.sync.err &>/dev/null
 else
     printf "$(date +"%Y-%m-%d_%H-%M"): database file not found; syncPass unsuccessful; is ds718p connected?\n" >> $HOME/.sync.err
