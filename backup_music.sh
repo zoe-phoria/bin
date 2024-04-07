@@ -10,7 +10,7 @@ SOURCE=/volume1/music
 TARGET=/volumeUSB1/usbshare
 DISKLABEL=$(cat /etc/mtab | grep usbshare | awk '{print $1}')
 SIZE=$(du -sL /volume1/files | awk '{print $1}')
-AVAIL=$(btrfs filesystem df $DISKLABEL --output=avail | tail -n 1)
+AVAIL=$(df $DISKLABEL --output=avail | tail -n 1)
 
 if [[ -f $TARGET/music.dummy ]] && (( $SIZE < $AVAIL )); then
     rsync -avb --chmod=D777,F766 --delete-after --backup-dir=${TARGET}/rsync_backup --exclude '#recycle' $SOURCE ${TARGET}/music/ >> "${TARGET}/rsync_log_$(date +"%Y-%m-%d_%H-%M")"
