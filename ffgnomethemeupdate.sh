@@ -7,7 +7,8 @@ echo
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-  cd /home/zoe/.mozilla/firefox/ee4c2w41.default-release/chrome/firefox-gnome-theme/
+  PROFILE=$(ls -l $HOME/.mozilla/firefox/ | grep default-release | awk '{print $NF}')
+  cd /home/zoe/.mozilla/firefox/$PROFILE/chrome/firefox-gnome-theme/
   git pull
 fi
 echo
