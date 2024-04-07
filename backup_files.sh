@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # check if output is a terminal
 if [ -t 1 ]; then
