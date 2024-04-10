@@ -12,8 +12,8 @@ then
     if [[ -z $(ls $HOME/appsupport) ]]; then
       ln -sf $HOME/Library/Application Support/ $HOME/appsupport
     fi
-    PROFILE=$(ls -l /Users/zoe/appsupport/Firefox/Profiles/ | grep default-release | awk '{print $NF}')
-    cd /Users/zoe/Library/Application\ Support/Firefox/Profiles/$PROFILE/chrome
+    PROFILE=$(ls -l $HOME/appsupport/Firefox/Profiles/ | grep default-release | awk '{print $NF}')
+    cd $HOME/Library/Application\ Support/Firefox/Profiles/$PROFILE/chrome
   else
     printf "unsupported OS\n"
   fi
