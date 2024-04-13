@@ -1,10 +1,26 @@
 #!/bin/bash
 
-if [[ -n $(lscpu --parse=MODELNAME | tail -n 1 | grep 4415Y) ]]; then
-    DEVICE=".surface"
-else
-    DEVICE=""
-fi
+case $(lscpu --parse=MODELNAME | tail -n 1 | awk {'print $1 $2 $3 $4'}) in
+
+    "Intel(R)Pentium(R)CPU4415Y")
+        DEVICE=".surface"
+    ;;
+
+    "Intel(R)Core(TM)i7-4700MQCPU")
+        DEVICE=".ms-16gc"
+    ;;
+
+    "Intel(R)Core(TM)i7-7700KCPU")
+        DEVICE=".desktop"
+    ;;
+
+    *)
+        printf "unknown device, not uploading package lists\n"
+        exit 1
+    ;;
+
+esac
+
 
 if [[ -d "/mnt/files/Software" ]] 
 then
