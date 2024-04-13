@@ -2,7 +2,7 @@
 
 # check if output is a terminal
 if [ -t 1 ]; then
-    printf "please run this script with nohup\n"
+    printf "please run this script with nohup (nohup ./backup_files &)\n"
     exit 1
 fi
 
