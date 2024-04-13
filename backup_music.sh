@@ -13,7 +13,7 @@ SIZE=$(du -sL /volume1/files | awk '{print $1}')
 AVAIL=$(df $DISKLABEL --output=avail | tail -n 1)
 
 if [[ -f $TARGET/music.dummy ]] && (( $SIZE < $AVAIL )); then
-    rsync -av --chmod=D777,F766 --delete-after --backup-dir=${TARGET}/rsync_backup --exclude '#recycle' $SOURCE ${TARGET}/music/ >> "${TARGET}/rsync_log_$(date +"%Y-%m-%d_%H-%M")"
+    rsync -av --chmod=D777,F766 --exclude '#recycle' $SOURCE ${TARGET}/music/ >> "${TARGET}/rsync_log_$(date +"%Y-%m-%d_%H-%M")"
 elif [[ -f $TARGET/music.dummy ]]; then
     printf "not enough space\n"
 else
