@@ -14,8 +14,8 @@ if [[ $OSTYPE == "linux-gnu" ]]; then
     fi
 elif [[ $OSTYPE == "darwin"* ]]; then
     SOURCE=/Volumes/files/Documents/
-    DEST=/Users/zoe/DocumentsBackup/
-    DEL=/Users/zoe/DocumentsDeleted/
+    DEST=$HOME/DocumentsBackup/
+    DEL=$HOME/DocumentsDeleted/
 else
     printf "$(date +"%Y-%m-%d_%H-%M"): unsupported operating system\n" >> $HOME/.sync.err
     exit 1
