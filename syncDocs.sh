@@ -9,8 +9,8 @@ if [[ $OSTYPE == "linux-gnu" ]]; then
         DEST=/mnt/sdcard/DocumentsBackup/
         DEL=/mnt/sdcard/DocumentsDeleted/
     else
-        printf "$(date +"%Y-%m-%d_%H-%M"): unsupported linux device\n" >> $HOME/.sync.err
-        exit 1
+        DEST=$HOME/DocumentsBackup
+        DEL=$HOME/DocumentsDeleted
     fi
 elif [[ $OSTYPE == "darwin"* ]]; then
     SOURCE=/Volumes/files/Documents/

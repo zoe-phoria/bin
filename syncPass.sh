@@ -7,8 +7,7 @@ if [[ $OSTYPE == "linux-gnu" ]]; then
     elif [[ -d /mnt/sdcard/ ]]; then
         DEST=/mnt/sdcard/passwords.kdbx
     else
-        printf "$(date +"%Y-%m-%d_%H-%M"): unsupported linux device\n" >> $HOME/.sync.err
-        exit 1
+        DEST=$HOME/passwords.kdbx
     fi
 elif [[ $OSTYPE == "darwin"* ]]; then
     SOURCE=/Volumes/files/passwords.kdbx
