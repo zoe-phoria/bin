@@ -25,7 +25,7 @@ then
     /bin/bash $HOME/builds/Write/setup.sh
   fi
   echo
-  echo "check https://raw.githubusercontent.com/styluslabs/templates/master/pdf2write.sh -O /home/zoe/bin/pdf2write.sh before proceeding"
+  echo "check https://raw.githubusercontent.com/styluslabs/templates/master/pdf2write.sh before proceeding"
   read -p "proceed? (y/N) " -n 1 -r
   echo
   echo
