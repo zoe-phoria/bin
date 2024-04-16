@@ -7,7 +7,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]
 then
     if [[ $OSTYPE == "linux-gnu" ]]; then
         PROFILE=$(ls -l $HOME/.mozilla/firefox/ | grep default-release | awk '{print $NF}')
-        cd /home/zoe/.mozilla/firefox/$PROFILE/chrome/firefox-gnome-theme/
+        cd $HOME/.mozilla/firefox/$PROFILE/chrome/firefox-gnome-theme/
     elif [[ $OSTYPE == "darwin"* ]]; then
         if [[ -z $(ls $HOME/appsupport) ]]; then
             ln -sf $HOME/Library/Application Support/ $HOME/appsupport
