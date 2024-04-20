@@ -16,7 +16,7 @@ case $1 in
                 sudo pacman -S $query
             ;;
                 
-            $(yay -Slq | grep -i ^$query$))
+            $(yay -Slqa | grep -i ^$query$))
                 yay -S $query
             ;;
                 
