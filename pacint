@@ -3,62 +3,78 @@
 case $1 in
 
     "-i"|"--install")
-        # install
-        sudo pacman -S $(pacman -Slq | fzf --preview 'pacman -Si {}' --layout=reverse)
-        ;;
-
-    "-a"|"--aur")
-        # install from aur
-        yay -S $(yay -Slq | fzf --preview 'yay -Si {}' --layout=reverse)
+        # install package
+        query=$(yay -Slq | fzf --preview 'yay -Si {}' --layout=reverse)
+        case $query in
+            
+            "")
+                printf "\033[01;31merror:\033[0m no package name returned\n"
+                exit 1
+            ;;
+            
+            $(pacman -Slq | grep -i ^$query$))
+                sudo pacman -S $query
+            ;;
+                
+            $(yay -Slq | grep -i ^$query$))
+                yay -S $query
+            ;;
+                
+            *)
+                printf "\033[01;31merror:\033[0m package not found\n"
+                exit 1
+            ;;
+            
+        esac
         ;;
         
     "-r"|"--remove")
-        #remove
-        sudo pacman -Runs $(pacman -Qq | fzf --preview 'pacman -Si {}' --layout=reverse)
+        # remove package
+        query=$(pacman -Qq | fzf --preview 'pacman -Si {}' --layout=reverse)
+        if [[ -n $query ]]; then
+            sudo pacman -Runs $query
+        else
+            printf "\033[01;31merror:\033[0m no package name returned\n"
+        fi
         ;;
-
-    "-S"|"--search")
+        
+    "-s"|"--search")
         # search without installing
-        pacman -Slq | fzf --preview "pacman -Si {}" --layout=reverse
-        ;;
-
-    "-A")
-        # search AUR without installing
         yay -Slq | fzf --preview 'yay -Si {}' --layout=reverse
         ;;
-
-    "-I")
+        
+    "-l"|"--list")
         # search installed packages
         pacman -Qq | fzf --preview 'pacman -Si {}' --layout=reverse
         ;;
-
+        
     "-u"|"--update")
         # update packages
         sudo pacman -Syu
         printf "\n"
         yay -Sua
         ;;
-
+        
     "-h"|"--help")
         # display help page
         printf "usage: pacint <operation>\n"
         printf "operations:\n"
         printf "    -i, --install  install packages\n"
-        printf "    -a, --aur      install aur packages\n"
         printf "    -r, --remove   remove packages\n"
-        printf "    -S, --search   search without installing\n"
-        printf "    -A             search aur without installing\n"
-        printf "    -I             search installed packages\n"
+        printf "    -s, --search   search without installing\n"
+        printf "    -l, --list     search installed packages\n"
         printf "    -u, --update   update packages\n"
         printf "    -h, --help     display this help page\n"
         ;;
-
+        
     "")
         printf "\033[01;31merror:\033[0m no operation specified (use -h for help)\n"
+        exit 2
         ;;
-
+        
     *)
-        printf "\033[01;31merror:\033[0m invalid operation '$1' (use -h for help)\n"
+        printf "\033[01;31merror:\033[0m invalid operation '$1' (use -h for help)\n"a
+        exit 2
         ;;
-
+        
 esac
