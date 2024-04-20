@@ -3,7 +3,7 @@
 # welcome message
 
 printf '\n'
-echo Updating pacman, AUR and flatpak
+echo Updating all packages
 printf '\n'
 printf '%*s\n' "${COLUMNS:-$(tput cols)}" 'pacman' | tr ' ' =
 printf '\n'
@@ -21,16 +21,6 @@ printf '\n'
 # udpate AUR
 
 yay -Sua
-
-# seperator
-
-printf '\n'
-printf '%*s\n' "${COLUMNS:-$(tput cols)}" 'flatpak' | tr ' ' =
-printf '\n'
-
-# update flatpak
-
-sudo flatpak update
 
 # finish line
 
