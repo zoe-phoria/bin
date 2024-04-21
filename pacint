@@ -58,7 +58,7 @@ case $1 in
         printf '\n%*s\n\n' "${COLUMNS:-$(tput cols)}" "" | tr ' ' =
         printf "All updates complete\n\n"
         ;;
-
+        
     "-c"|"--clean")
         # cleanup package cache and unused repositoried
         sudo pacman -Sc
