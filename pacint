@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# pacint - interactive pacman and yay wrapper
+
 case $1 in
 
     "-i"|"--install")
