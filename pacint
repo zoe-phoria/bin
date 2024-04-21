@@ -50,10 +50,10 @@ case $1 in
         
     "-u"|"--update")
         # update packages
-        printf "\nUpdating all packages\n\n"
-        printf '%*s\n\n' "${COLUMNS:-$(tput cols)}" "pacman" | tr ' ' =
+        printf "\nupdating all packages\n"
+        printf '\n%*s\n\n' "${COLUMNS:-$(tput cols)}" "pacman  " | tr ' ' =
         sudo pacman -Syu
-        printf '\n%*s\n\n' "${COLUMNS:-$(tput cols)}" "yay" | tr ' ' =
+        printf '\n%*s\n\n' "${COLUMNS:-$(tput cols)}" "yay  " | tr ' ' =
         yay -Syua
         printf '\n%*s\n\n' "${COLUMNS:-$(tput cols)}" "" | tr ' ' =
         printf "All updates complete\n\n"
