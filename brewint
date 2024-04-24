@@ -1,0 +1,83 @@
+#!/bin/bash
+
+# brewint - interactive pacman and yay wrapper
+
+case $1 in
+
+    "-i"|"--install")
+        # install package
+        query=$(brew search "" | fzf --preview 'brew info {}' --layout=reverse)
+        case $query in
+            
+            "")
+                printf "\033[01;31merror:\033[0m no package name returned\n"
+                exit 1
+            ;;
+                
+            $(brew search "" | grep -i ^$query$))
+                brew install $query
+            ;;
+                
+            *)
+                printf "\033[01;31merror:\033[0m package not found\n"
+                exit 1
+            ;;
+            
+        esac
+        ;;
+        
+    "-r"|"--remove")
+        # remove package
+        query=$(brew deps --installed | cut -d":" -f 1 | fzf --preview 'brew info {}' --layout=reverse)
+        if [[ -n $query ]]; then
+            brew uninstall $query
+        else
+            printf "\033[01;31merror:\033[0m no package name returned\n"
+        fi
+        ;;
+        
+    "-s"|"--search")
+        # search without installing
+        brew search "" | fzf --preview 'brew info {}' --layout=reverse
+        ;;
+        
+    "-l"|"--list")
+        # search installed packages
+        brew deps --installed | cut -d":" -f 1 | fzf --preview 'brew info {}' --layout=reverse
+        ;;
+        
+    "-u"|"--update")
+        # update packages
+        brew  update
+        brew upgrade
+        ;;
+        
+    "-c"|"--clean")
+        # cleanup package cache and unused repositoried
+        brew cleanup
+        ;;
+        
+    "-h"|"--help")
+        # display help page
+        printf "usage: brewint <operation>\n"
+        printf "operations:\n"
+        printf "    -i, --install  install packages\n"
+        printf "    -r, --remove   remove packages\n"
+        printf "    -s, --search   search without installing\n"
+        printf "    -l, --list     search installed packages\n"
+        printf "    -u, --update   update packages\n"
+        printf "    -c, --clean    cleanup package cache and unused repositories\n"
+        printf "    -h, --help     display this help page\n"
+        ;;
+        
+    "")
+        printf "\033[01;31merror:\033[0m no operation specified (use -h for help)\n"
+        exit 2
+        ;;
+        
+    *)
+        printf "\033[01;31merror:\033[0m invalid operation '$1' (use -h for help)\n"a
+        exit 2
+        ;;
+        
+esac
