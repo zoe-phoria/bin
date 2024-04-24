@@ -77,7 +77,7 @@ case $1 in
         printf "    -s, --search   search without installing\n"
         printf "    -l, --list     search installed packages\n"
         printf "    -u, --update   update packages\n"
-        printf "    -c, --clean    cleanup package cache and unused repositories"
+        printf "    -c, --clean    cleanup package cache and unused repositories\n"
         printf "    -h, --help     display this help page\n"
         ;;
         
