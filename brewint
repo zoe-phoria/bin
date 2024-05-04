@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# brewint - interactive pacman and yay wrapper
+# brewint - interactive homebrew wrapper
 
 case $1 in
 
