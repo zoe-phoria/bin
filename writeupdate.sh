@@ -1,11 +1,9 @@
 #!/bin/bash
 # update write and pdf2write.sh
 
-echo
-echo "check http://styluslabs.com/download before proceeding"
+printf "\ncheck http://styluslabs.com/download before proceeding\n"
 read -p "proceed? (y/N) " -n 1 -r
-echo
-echo
+printf "\n\n"
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
   # download write.tar.gz from styluslabs.com
@@ -15,20 +13,17 @@ then
   # delete write.tar.gz
   rm $HOME/builds/write.tar.gz
   bat $HOME/builds/Write/setup.sh
-  echo
-  read -p "install? (y/N) "
-  echo
-  echo
+  read -p $'\n'"install? (y/N) "
+  printf "\n\n"
   if [[ $REPLY =~ ^[Yy]$ ]]
   then
     # run write setup
     /bin/bash $HOME/builds/Write/setup.sh
   fi
   echo
-  echo "check https://raw.githubusercontent.com/styluslabs/templates/master/pdf2write.sh before proceeding"
+  printf "\ncheck https://raw.githubusercontent.com/styluslabs/templates/master/pdf2write.sh before proceeding\n"
   read -p "proceed? (y/N) " -n 1 -r
-  echo
-  echo
+  printf "\n\n"
   if [[ $REPLY =~ ^[Yy]$ ]]
   then
     # downlad pfd2write.sh
