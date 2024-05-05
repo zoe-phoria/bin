@@ -4,4 +4,5 @@ if [[ -f /usr/bin/xclip ]]; then
     cat /tmp/clipboard | fzf --tac | tr -d '\n' | xclip -selection clipboard
 else
     printf "xclip not installed\n"
+    exit 1
 fi
