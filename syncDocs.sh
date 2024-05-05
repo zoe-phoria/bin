@@ -21,10 +21,10 @@ else
     exit 1
 fi
 
-if [[ -f $SOURCE/../passwords.kdbx ]]; then
+if [[ -d $SOURCE ]]; then
     rsync -a -E -v --delete -b --backup-dir=$DEL -P --stats $SOURCE $DEST > $HOME/.syncDocs.log
     printf "$(date +"%Y-%m-%d_%H-%M"): ran rsync from $SOURCE to $DEST\n" >> $HOME/.syncDocs.log
     rm $HOME/.sync.err &>/dev/null
 else
-    printf "$(date +"%Y-%m-%d_%H-%M"): passwords.kdbx not found; syncDocs unsuccessful; is ds718p connected?\n" >> $HOME/.sync.err
+    printf "$(date +"%Y-%m-%d_%H-%M"): /mnt/files/Documents not found; syncDocs unsuccessful; is ds718p connected?\n" >> $HOME/.sync.err
 fi
