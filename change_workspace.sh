@@ -1,7 +1,6 @@
 #!/bin/bash
 
 current_workspace=$(i3-msg -t get_workspaces | awk -F '\"focused\":true' '{print $1}' | awk -F '\"name\"' '{print $NF}' | awk -F '\"' '{print $2}')
-echo $current_workspace
 if [[ $1 = "next" ]]; then
     next_workspace=$(( current_workspace + 1 ))
 elif [[ $1 = "prev" ]]; then
