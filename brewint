@@ -48,7 +48,7 @@ case $1 in
         
     "-u"|"--update")
         # update packages
-        brew  update
+        brew update
         brew upgrade
         ;;
         
