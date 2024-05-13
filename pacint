@@ -68,6 +68,11 @@ case $1 in
         yay -Sca
         ;;
         
+    "-o"|"--orphans")
+        pacman -Qtdq | fzf --preview 'yay -Si {}' --layout=reverse
+        pacman -Qtdq
+        ;;
+        
     "-h"|"--help")
         # display help page
         printf "usage: pacint <operation>\n"
@@ -78,6 +83,7 @@ case $1 in
         printf "    -l, --list     search installed packages\n"
         printf "    -u, --update   update packages\n"
         printf "    -c, --clean    cleanup package cache and unused repositories\n"
+        printf "    -o, --orphans  list orphan packages\n"
         printf "    -h, --help     display this help page\n"
         ;;
         
