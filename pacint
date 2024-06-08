@@ -37,6 +37,7 @@ case $1 in
             sudo pacman -Runs $query
         else
             printf "\033[01;31merror:\033[0m no package name returned\n"
+            exit 1
         fi
         ;;
         
