@@ -20,6 +20,8 @@ if [[ -f $TARGET/files.dummy ]] && (( $SIZE < $AVAIL )); then
     rsync -av --chmod=D777,F766 $SOURCE ${TARGET}/files_$(date +"%Y-%m-%d_%H-%M") >> "$TARGET/rsync_log_$(date +"%Y-%m-%d_%H-%M")"
 elif [[ -f $TARGET/files.dummy ]]; then
     printf "not enough space\n"
+    exit 1
 else
     printf "files.dummy missing (wrong drive attached)\n"
+    exit 1
 fi

@@ -16,6 +16,8 @@ if [[ -f $TARGET/music.dummy ]] && (( $SIZE < $AVAIL )); then
     rsync -av --chmod=D777,F766 --exclude '#recycle' $SOURCE ${TARGET}/music/ >> "${TARGET}/rsync_log_$(date +"%Y-%m-%d_%H-%M")"
 elif [[ -f $TARGET/music.dummy ]]; then
     printf "not enough space\n"
+    exit 1
 else
     printf "music.dummy missing (wrong drive attached)\n"
+    exit 1
 fi
