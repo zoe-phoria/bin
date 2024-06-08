@@ -12,7 +12,7 @@ then
   tar -xvzf $HOME/builds/write.tar.gz -C $HOME/builds/
   # delete write.tar.gz
   rm $HOME/builds/write.tar.gz
-  bat $HOME/builds/Write/setup.sh
+  bat $HOME/builds/Write/setup.sh || cat $HOME/builds/Write/setup.sh
   read -p $'\n'"install? (y/N) "
   printf "\n\n"
   if [[ $REPLY =~ ^[Yy]$ ]]
@@ -20,8 +20,7 @@ then
     # run write setup
     /bin/bash $HOME/builds/Write/setup.sh
   fi
-  echo
-  printf "\ncheck https://raw.githubusercontent.com/styluslabs/templates/master/pdf2write.sh before proceeding\n"
+  printf "\n\ncheck https://raw.githubusercontent.com/styluslabs/templates/master/pdf2write.sh before proceeding\n"
   read -p "proceed? (y/N) " -n 1 -r
   printf "\n\n"
   if [[ $REPLY =~ ^[Yy]$ ]]
@@ -30,6 +29,6 @@ then
     wget https://raw.githubusercontent.com/styluslabs/templates/master/pdf2write.sh -O $HOME/bin/pdf2write.sh
     # make pdf2write.sh executable
     chmod +x $HOME/bin/pdf2write.sh
-    bat $HOME/bin/pdf2write.sh
+    bat $HOME/bin/pdf2write.sh || cat $HOME/bin/pdf2write.sh
   fi
 fi
