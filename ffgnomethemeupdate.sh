@@ -7,16 +7,19 @@ if [[ $REPLY =~ ^[Yy]$ ]]
 then
     if [[ $OSTYPE == "linux-gnu" ]]; then
         PROFILE=$(ls -l $HOME/.mozilla/firefox/ | grep default-release | awk '{print $NF}')
-        cd $HOME/.mozilla/firefox/$PROFILE/chrome/firefox-gnome-theme/
+        cd $HOME/.mozilla/firefox/$PROFILE/chrome/firefox-gnome-theme/ || { printf "ffgnometheme not installed\n"; exit 1; }
     elif [[ $OSTYPE == "darwin"* ]]; then
         if [[ -z $(ls $HOME/appsupport) ]]; then
             ln -sf $HOME/Library/Application Support/ $HOME/appsupport
         fi
         PROFILE=$(ls -l $HOME/appsupport/Firefox/Profiles/ | grep default-release | awk '{print $NF}')
-        cd $HOME/Library/Application\ Support/Firefox/Profiles/$PROFILE/chrome
+        cd $HOME/Library/Application\ Support/Firefox/Profiles/$PROFILE/chrome || { printf "ffgnometheme not installed\n"; exit 1; }
     else
         printf "unsupported OS\n"
+        exit 1
     fi
     git pull
+else
+    printf "aborted\n"
 fi
 printf "\n"
