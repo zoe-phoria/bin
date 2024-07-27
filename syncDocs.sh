@@ -26,5 +26,5 @@ if [[ -d $SOURCE ]]; then
     printf "$(date +"%Y-%m-%d_%H-%M"): ran rsync from $SOURCE to $DEST\n" >> $HOME/.syncDocs.log
     rm $HOME/.sync.err &>/dev/null
 else
-    printf "$(date +"%Y-%m-%d_%H-%M"): /mnt/files/Documents not found; syncDocs unsuccessful; is ds718p connected?\n" >> $HOME/.sync.err
+    printf "$(date +"%Y-%m-%d_%H-%M"): $SOURCE not found; syncDocs unsuccessful; is ds718p connected?\n" >> $HOME/.sync.err
 fi
