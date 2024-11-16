@@ -57,9 +57,9 @@ case $1 in
         printf '\n%*s\n\n' "${COLUMNS:-$(tput cols)}" "pacman  " | tr ' ' =
         sudo pacman -Syu
         printf '\n%*s\n\n' "${COLUMNS:-$(tput cols)}" "yay  " | tr ' ' =
-        yay -Syua
+        yay -Syua --removemake
         printf '\n%*s\n\n' "${COLUMNS:-$(tput cols)}" "" | tr ' ' =
-        printf "All updates complete\n\n"
+        printf "all updates complete\n\n"
         ;;
         
     "-c"|"--clean")
@@ -70,22 +70,35 @@ case $1 in
         ;;
         
     "-o"|"--orphans")
-        pacman -Qtdq | fzf --preview 'yay -Si {}' --layout=reverse
-        pacman -Qtdq
+        if [[ -n $(pacman -Qtdq) ]]; then
+            pacman -Qtdq
+        else 
+            printf "no orphan packages found\n"
+        fi
+        ;;
+        
+    "-O"|"--removeorphans")
+        if [[ -n $(pacman -Qtdq) ]]; then
+            sudo pacman -Runs $(pacman -Qtdq | sed "s/\n/ /g")
+            printf "orphan packages removed\n"
+        else
+            printf "no orphan packages found\n"
+        fi
         ;;
         
     "-h"|"--help")
         # display help page
         printf "usage: pacint <operation>\n"
         printf "operations:\n"
-        printf "    -i, --install  install packages\n"
-        printf "    -r, --remove   remove packages\n"
-        printf "    -s, --search   search without installing\n"
-        printf "    -l, --list     search installed packages\n"
-        printf "    -u, --update   update packages\n"
-        printf "    -c, --clean    cleanup package cache and unused repositories\n"
-        printf "    -o, --orphans  list orphan packages\n"
-        printf "    -h, --help     display this help page\n"
+        printf "    -i, --install       install packages\n"
+        printf "    -r, --remove        remove packages\n"
+        printf "    -s, --search        search without installing\n"
+        printf "    -l, --list          search installed packages\n"
+        printf "    -u, --update        update packages\n"
+        printf "    -c, --clean         cleanup package cache and unused repositories\n"
+        printf "    -o, --orphans       list orphan packages\n"
+        printf "    -O, --removeorphans remove orphan packages\n"
+        printf "    -h, --help          display this help page\n"
         ;;
         
     "")
