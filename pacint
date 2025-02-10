@@ -19,7 +19,7 @@ case $1 in
             ;;
                 
             $(yay -Slqa | grep -i ^$query$))
-                yay -S $query
+                yay -S --removemake $query
             ;;
                 
             *)
