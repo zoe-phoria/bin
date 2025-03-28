@@ -16,7 +16,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
     else
         printf "unsupported OS\n"
     fi
-    if [[ -n $(git status --porcelain) ]]; then
+    if [[ -n $(git pull --dry-run) ]]; then
         git pull
     else
         printf "Already up to date.\n"
@@ -30,7 +30,7 @@ read -p "proceed (y/N) " -n 1 -r
 printf "\n\n"
 if [[ $REPLY =~ ^[Yy]$ && -d $HOME/builds/thunderbird-gnome-theme/ ]]; then
     cd $HOME/builds/thunderbird-gnome-theme/
-    if [[ -n $(git status --porcelain) ]]; then
+    if [[ -n $(git pull --dry-run) ]]; then
         git pull
         /bin/bash $HOME/builds/thunderbird-gnome-theme/scripts/auto-install.sh
     else
