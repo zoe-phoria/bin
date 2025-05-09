@@ -1,5 +1,5 @@
 #!/bin/bash
-# restart librespot.service by the push of a button (BCM pin 5 to ground)
+# restart librespot.service by the push of a button (BCM pin 5 to ground) (run as root)
 
 raspi-gpio set 5 ip
 raspi-gpio set 5 pu
