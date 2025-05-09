@@ -6,12 +6,14 @@ raspi-gpio set 5 pu
 
 function button_loop()
 {
-    STATE=$(raspi-gpio get 5 | awk -F "[= ]" '{print $4}')
+    STATE=$(raspi-gpio get 5)
+    STATE=${STATE:14:1}
     if [[ $STATE == 0 ]]; then
         printf "button pressed\n"
         systemctl --user -M zoe@ restart librespot.service
-        sleep 5
+        sleep 10
     fi
+    sleep 1
 }
 
 while true; do
